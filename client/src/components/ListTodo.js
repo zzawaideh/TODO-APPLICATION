@@ -19,17 +19,19 @@ export const ListTodo = () => {
 
 
     const getTodos = async () => {
-        const response = await fetch("/todos");
-        const jsonData = await response.json();
+        try {   
+            const response = await fetch("/todos");
+            const jsonData = await response.json();
 
-        setTodos(jsonData);
+            setTodos(jsonData);
+        } catch (err) {
+            console.error(err.message);
+        }
     };
 
     useEffect(() => {
         getTodos();
     }, []);
-
-    console.log(todos);
     
 
     return (

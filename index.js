@@ -35,7 +35,7 @@ app.get('/todos', async (req, res) => {
 app.get('/todos/:id', async (req, res) => {
     try {
         const response = await db.query('SELECT * FROM todo WHERE id=$1', [req.params.id]);
-        res.json(response.rows)
+        res.json(response.rows[0])
     } catch (err) {
         console.error(err.message);
     }
