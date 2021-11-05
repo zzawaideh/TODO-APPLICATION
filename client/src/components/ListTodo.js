@@ -19,23 +19,22 @@ export const ListTodo = () => {
 
 
     const getTodos = async () => {
-        try {   
-            const response = await fetch("/todos");
-            const jsonData = await response.json();
+        const response = await fetch("/todos");
+        const jsonData = await response.json();
 
-            setTodos(jsonData);
-        } catch (err) {
-            console.error(err.message);
-        }
+        setTodos(jsonData);
     };
 
     useEffect(() => {
         getTodos();
     }, []);
+
+    console.log(todos);
     
 
     return (
         <Fragment>
+            {" "}
             <table class="table mt-5 text-center">
                 <thead>
                 <tr>
